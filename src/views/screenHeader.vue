@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <h1>可视化展板-Echarts</h1>
-    <div class="date">当前时间：2022年10月20日</div>
+    <div class="date">当前时间:2022年10月20日-17时33分25秒</div>
   </div>
 </template>
 
