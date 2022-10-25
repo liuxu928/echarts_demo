@@ -134,62 +134,104 @@ onMounted(() => {
   };
   leftOneChart.setOption(leftOneOptions);
   // 右侧第一个柱状图
+  const myColor = ["#1089E7", "#F57474", "#56D0E3", "#F8B448", "#8B78F6"];
   const rightOneChart = echarts.init(rightOne.value);
   const rightOneOptions = {
     title: {
       text: "柱状图-技能掌握",
       left: "center",
-      top: "5%",
+      top: "8%",
       textStyle: {
         color: "#fff",
         fontSize: 15,
       },
     },
-    tooltip: {
-      trigger: "axis",
-      backgroundColor: "rgba(39, 42, 59,.6)",
-      borderColor: "rgba(51, 51, 51, 0.01)",
-      textStyle: {
-        fontSize: 10,
-        color: "white",
-      },
-      axisPointer: {
-        type: "shadow",
-      },
-    },
-    legend: {},
+    // tooltip: {
+    //   trigger: "axis",
+    //   backgroundColor: "rgba(39, 42, 59,.6)",
+    //   borderColor: "rgba(51, 51, 51, 0.01)",
+    //   textStyle: {
+    //     fontSize: 10,
+    //     color: "white",
+    //   },
+    //   axisPointer: {
+    //     type: "shadow",
+    //   },
+    // },
+
     grid: {
-      left: "3%",
-      right: "4%",
+      left: "8%",
+      right: "5%",
       bottom: "3%",
       containLabel: true,
     },
     xAxis: {
+      show: false,
       type: "value",
-      // 刻度是否显示
-      axisTick: {
-        show: false,
-      },
-      // 去除分割线
-      splitLine: {
-        show: false,
-      },
     },
-    yAxis: {
-      type: "category",
-      axisTick: {
-        show: false,
+    yAxis: [
+      {
+        type: "category",
+        // 坐标轴是否显示
+        axisLine: {
+          show: false,
+        },
+        // 刻度是否显示
+        axisTick: {
+          show: false,
+        },
+        // 去除分割线
+        splitLine: {
+          show: false,
+        },
+        // 刻度标签样式
+        axisLabel: {
+          fontSize: 12,
+          color: "#fff",
+        },
+        data: ["HTML5", "CSS3", "Javascript", "VUE", "NODE"],
       },
-      data: ["HTML5", "CSS3", "Javascript", "VUE", "NODE"],
-    },
+      {
+        data: [702, 350, 610, 793, 664],
+        axisTick: {
+          show: false,
+        },
+        axisLine: {
+          show: false,
+        },
+        axisLabel: {
+          fontSize: 12,
+          color: "#fff",
+        },
+      },
+    ],
     series: [
       {
+        name: "轴",
         type: "bar",
-        data: [18203, 23489, 29034, 104970, 131744, 630230],
+        yAxisIndex: 0,
+        barWidth: 10,
+        itemStyle: {
+          color: function (params) {
+            var num = myColor.length;
+            return myColor[params.dataIndex % num];
+          },
+          barBorderRadius: 20,
+        },
+        data: [70, 34, 60, 78, 69],
       },
       {
+        name: "框",
         type: "bar",
-        data: [10000, 10000, 1000, 1000, 1000, 1000],
+        yAxisIndex: 1,
+        barWidth: 15,
+        itemStyle: {
+          color: "none",
+          borderColor: "#00c1de",
+          borderWidth: 3,
+          barBorderRadius: 15,
+        },
+        data: [100, 100, 100, 100, 100],
       },
     ],
   };

@@ -1,11 +1,20 @@
 <template>
   <div class="header">
     <h1>可视化展板-Echarts</h1>
-    <div class="date">当前时间:2022年10月20日-17时33分25秒</div>
+    <div class="date">当前时间:{{ nowTime }}</div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import moment from "moment";
+
+let nowTime = ref(moment().format("YYYY年MM月DD日-HH时mm分ss秒"));
+
+setInterval(() => {
+  nowTime.value = moment().format("YYYY年MM月DD日-HH时mm分ss秒");
+}, 1000);
+</script>
 
 <style lang="less" scoped>
 .header {

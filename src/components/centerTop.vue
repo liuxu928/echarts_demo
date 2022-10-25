@@ -1,9 +1,9 @@
 <template>
   <div class="content-hd">
     <ul class="hd-counter">
-      <li>4065</li>
+      <li>{{ number1 }}</li>
       <span></span>
-      <li>6844</li>
+      <li>{{ number2 }}</li>
     </ul>
 
     <ul class="hd-explain">
@@ -13,7 +13,16 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+const number1 = ref(Math.floor(Math.random().toFixed(2) * 10000));
+const number2 = ref(Math.floor(Math.random().toFixed(2) * 10000));
+// let number2 = ref(null);
+setInterval(() => {
+  number1.value += Math.floor(Math.random().toFixed(2) * 50 - 25);
+  number2.value += Math.floor(Math.random().toFixed(2) * 50 - 25);
+}, 1000);
+</script>
 
 <style lang="less" scoped>
 .content-hd {
